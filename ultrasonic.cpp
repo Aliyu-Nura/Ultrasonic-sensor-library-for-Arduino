@@ -1,13 +1,20 @@
 #include "ultrasonic.h"
 #include <Arduino.h>
 //contructor definition
+USS::USS(){
+
+}
 USS::USS(int trigger,int echo){
     TrigPin = trigger;
     EchoPin = echo;
 }
 
 //Other device method definitions
-
+void USS::Setup(){
+   pinMode(TrigPin, OUTPUT);
+   pinMode(EchoPin, INPUT);
+   Serial.begin(9600);
+}
 long USS::GetDistance(){
     digitalWrite(TrigPin, LOW);
     delayMicroseconds(5);
